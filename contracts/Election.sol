@@ -19,6 +19,11 @@ contract Election {
     // get candidate count
     uint public candidatesCount;     // this is the counter
 
+    // voting event 
+    event votedEvent (
+        uint indexed _candidateId
+    );
+    
     function Election() public{
        // we dont want any one else to add the candidates therefore we call the addCandidate function in the constructor
         addCandidates("Candidate 1");
@@ -42,5 +47,7 @@ contract Election {
 
         // update candidate vote count
         candidates[_candidateId].voteCount++;
+
+        votedEvent(_candidateId);
     }
 }
