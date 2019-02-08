@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.5.0;
 
 contract Election {
     // model a candidate
@@ -24,7 +24,7 @@ contract Election {
         uint indexed _candidateId
     );
     
-    function Election() public{
+    constructor() public{
        // we dont want any one else to add the candidates therefore we call the addCandidate function in the constructor
         addCandidates("Candidate 1");
         addCandidates("Candidate 2");
@@ -32,7 +32,7 @@ contract Election {
         // candidates count is 3
     }
     // adding the candidate to the mapping
-    function addCandidates(string _name) private {
+    function addCandidates(string memory _name) private {
         candidatesCount++; // this will increment the candidate counter
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0); // assiging value to the candidate structure
     }
@@ -48,6 +48,6 @@ contract Election {
         // update candidate vote count
         candidates[_candidateId].voteCount++;
 
-        votedEvent(_candidateId);
+        emit votedEvent(_candidateId);
     }
 }
