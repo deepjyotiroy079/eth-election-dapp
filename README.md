@@ -1,6 +1,6 @@
 # Election-DApp
 
-# Installing the dependencies
+# Usage
 1. Simply clone the repo.
 2. cd into the project directory and type
 	
